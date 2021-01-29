@@ -12,7 +12,7 @@ namespace Buratta_RicercaConcorrente
         {
             int[] n = new int[100];
             RiempiArray(n);
-            Console.WriteLine("Inserisci un numero:");
+            Console.WriteLine("Inserisci un numero :");
             int n1 = int.Parse(Console.ReadLine());
             Thread thread = new Thread(() => RicercaNumeri(n1, n));
             thread.Start();
