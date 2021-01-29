@@ -27,7 +27,7 @@ namespace Buratta_RicercaConcorrente
                     Console.WriteLine($"numero Trovato: {array[i]} posizione: {i}");
                 }
             }
-            Console.WriteLine("Ricerca terminata");
+            Console.WriteLine("ricerca terminata");
         }
         private static void RiempiArray(int[] numeri)
         {
