@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Buratta_RicercaConcorrente
 {
@@ -14,20 +15,25 @@ namespace Buratta_RicercaConcorrente
             RiempiArray(n);
             Console.WriteLine("Inserisci un numero :");
             int n1 = int.Parse(Console.ReadLine());
-            Thread thread = new Thread(() => RicercaNumeri(n1, n));
-            thread.Start();
+            Console.WriteLine(RicercaNumeriAsync(n1, n).Result);
             Console.ReadLine();
         }
-        public static void RicercaNumeri(int n, int[] array)
+        private static async Task<bool> RicercaNumeriAsync(int n, int[] array)
         {
-            for (int i = 0; i < 100; i++)
+            bool trovato = false;
+
+            await Task.Run(() =>
             {
-                if (n == array[i])
+                for (int i = 0; i < 100; i++)
                 {
-                    Console.WriteLine($"numero Trovato: {array[i]} posizione: {i}");
+                    if (n == array[i])
+                    {
+                        trovato = true;
+                    }
                 }
-            }
-            Console.WriteLine("ricerca terminata");
+            });
+
+            return trovato;
         }
         private static void RiempiArray(int[] numeri)
         {
